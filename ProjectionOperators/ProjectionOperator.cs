@@ -37,5 +37,31 @@ namespace ProjectionOperators
                 Debug.WriteLine(num);                
             }
         }
+
+        public void SelectNamesOfProductsLinq(List<Product> products)
+        {
+            var productNames = 
+                from product in products
+                select product.Name;
+
+            Debug.WriteLine("product names:");
+
+            foreach (var productName in productNames)
+            {
+                Debug.WriteLine(productName);
+            }
+        }
+
+        public void SelectNamesOfProductsLambda(List<Product> products)
+        {
+            var productNames = products.Select(product => product.Name);
+
+            Debug.WriteLine("product names:");
+
+            foreach (var productName in productNames)
+            {
+                Debug.WriteLine(productName);
+            }
+        }
     }
 }

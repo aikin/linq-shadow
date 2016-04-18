@@ -12,6 +12,9 @@ namespace ProjectionOperators
 
             projectionOperator.PlusOneForEachItemLinq(DataProvider.GivenNumbers());
             projectionOperator.PlusOneForEachItemLambda(DataProvider.GivenNumbers());
+
+            projectionOperator.SelectNamesOfProductsLinq(DataProvider.GivenProducts());
+            projectionOperator.SelectNamesOfProductsLambda(DataProvider.GivenProducts());
         }
     }
 }
