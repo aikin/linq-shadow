@@ -198,3 +198,4 @@ FakesAssemblies/
 # idea
 .idea
 linq-shadow.sln.iml
+.DS_Store
