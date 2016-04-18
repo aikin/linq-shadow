@@ -15,6 +15,12 @@ namespace ProjectionOperators
             return numbers;
         }
 
+        public static string[] GivenStrings()
+        {
+            string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            return strings;
+        }
+
         public static List<Product> GivenProducts()
         {
             var products = new List<Product>()

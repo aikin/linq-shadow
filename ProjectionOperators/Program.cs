@@ -15,6 +15,10 @@ namespace ProjectionOperators
 
             projectionOperator.SelectNamesOfProductsLinq(DataProvider.GivenProducts());
             projectionOperator.SelectNamesOfProductsLambda(DataProvider.GivenProducts());
+
+
+            projectionOperator.TransformationNumberToTextLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+            projectionOperator.TransformationNumberToTextLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
         }
     }
 }

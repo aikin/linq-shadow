@@ -63,5 +63,31 @@ namespace ProjectionOperators
                 Debug.WriteLine(productName);
             }
         }
+
+        public void TransformationNumberToTextLinq(int[] numbers, string[] strings)
+        {
+            var textNums =
+                from n in numbers
+                select strings[n];
+
+            Debug.WriteLine("Numebr Strings: ");
+
+            foreach (var textNum in textNums)
+            {
+                Debug.WriteLine(textNum);
+            }
+        }
+
+        public void TransformationNumberToTextLambda(int[] numbers, string[] strings)
+        {
+            var textNums = numbers.Select(n => strings[n]);
+
+            Debug.WriteLine("Numebr Strings: ");
+
+            foreach (var textNum in textNums)
+            {
+                Debug.WriteLine(textNum);
+            }
+        }
     }
 }
