@@ -4,12 +4,6 @@
 
 # why
 
-# when
-
-# where
-
-# who
-
 # how
 
 ## TODO
