@@ -64,7 +64,7 @@ namespace ProjectionOperators
             }
         }
 
-        public void TransformationNumberToTextLinq(int[] numbers, string[] strings)
+        public void TransformNumberToTextLinq(int[] numbers, string[] strings)
         {
             var textNums =
                 from n in numbers
@@ -78,7 +78,7 @@ namespace ProjectionOperators
             }
         }
 
-        public void TransformationNumberToTextLambda(int[] numbers, string[] strings)
+        public void TransformNumberToTextLambda(int[] numbers, string[] strings)
         {
             var textNums = numbers.Select(n => strings[n]);
 
