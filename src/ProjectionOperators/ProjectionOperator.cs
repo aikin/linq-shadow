@@ -123,11 +123,11 @@ namespace ProjectionOperators
         {
             var digitOddEvens =
                 from number in numbers
-                select new { Digit = strings[number], Even = number % 2 == 0 };
+                select new { Digit = strings[number], IsEven = number % 2 == 0 };
 
             foreach (var digitOddEven in digitOddEvens)
             {
-                Debug.WriteLine("The digit {0} is {1}.", digitOddEven.Digit, digitOddEven.Even ? "even" : "odd");
+                Debug.WriteLine("The digit {0} is {1}.", digitOddEven.Digit, digitOddEven.IsEven ? "even" : "odd");
             }
         }
 
@@ -135,12 +135,12 @@ namespace ProjectionOperators
         {
             var digitOddEvens = numbers.Select(number => new
             {
-                Digit = strings[number], Even = number % 2 == 0
+                Digit = strings[number], IsEven = number % 2 == 0
             });
 
             foreach (var digitOddEven in digitOddEvens)
             {
-                Debug.WriteLine("The digit {0} is {1}.", digitOddEven.Digit, digitOddEven.Even ? "even" : "odd");
+                Debug.WriteLine("The digit {0} is {1}.", digitOddEven.Digit, digitOddEven.IsEven ? "even" : "odd");
             }
         }
 
@@ -173,6 +173,48 @@ namespace ProjectionOperators
             {
                 Debug.WriteLine("{0} is in the category {1} and costs {2} per unit.",
                     productInfo.Name, productInfo.Category, productInfo.Price);
+            }
+        }
+
+        public void DetermineNumberIsInPlaceLambda(int[] numbers)
+        {
+            var numsInPlace = numbers.Select((num, index) => new
+            {
+                Num = num,
+                IsInPlace = num == index
+            });
+
+            Debug.WriteLine("Number: In-place?");
+            foreach (var num in numsInPlace)
+            {
+                Debug.WriteLine("{0}: {1}", num.Num, num.IsInPlace);
+            }
+        }
+
+        public void FilteredEachTextDigitLessThanFiveLinq(int[] numbers, string[] strings)
+        {
+            var lowNums =
+                from num in numbers
+                where num < 5
+                select strings[num];
+
+            Debug.WriteLine("Numbers < 5:");
+            foreach (var num in lowNums)
+            {
+                Debug.WriteLine(num);
+            }
+        }
+
+        public void FilteredEachTextDigitLessThanFiveLambda(int[] numbers, string[] strings)
+        {
+            var lowNums = numbers
+                .Where(num => num < 5)
+                .Select(num => strings[num]);
+
+            Debug.WriteLine("Numbers < 5:");
+            foreach (var num in lowNums)
+            {
+                Debug.WriteLine(num);
             }
         }
     }

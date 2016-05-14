@@ -53,6 +53,20 @@ namespace ProjectionOperators
             */
             projectionOperator.GenerateProductInfosLinq(DataProvider.GivenProducts());
             projectionOperator.GenerateProductInfosLambda(DataProvider.GivenProducts());
+
+
+            /*
+                This sample uses an indexed Select clause to determine if the value of ints in an array match their position in the array.
+            */
+            projectionOperator.DetermineNumberIsInPlaceLambda(DataProvider.GivenNumbers());
+
+
+            /* 
+                This sample combines select and where to make a simple query 
+                that returns the text form of each digit less than 5. 
+            */
+            projectionOperator.FilteredEachTextDigitLessThanFiveLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+            projectionOperator.FilteredEachTextDigitLessThanFiveLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
         }
     }
 }
