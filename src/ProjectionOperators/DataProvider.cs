@@ -106,6 +106,12 @@ namespace ProjectionOperators
 
             return products;
         }
+
+        public static string[] GivenWords()
+        {
+            string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+            return words;
+        }
     }
 
     public class Product

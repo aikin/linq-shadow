@@ -91,5 +91,31 @@ namespace ProjectionOperators
                 Debug.WriteLine(textNum);
             }
         }
+
+
+        public void GenerateUpperLowerWordsLinq(string[] words)
+        {
+            var upperLowerWords =
+                from word in words
+                select new {Upper = word.ToUpper(), Lower = word.ToLower()};
+
+            foreach (var upperLowerWord in upperLowerWords)
+            {
+                Debug.WriteLine("Uppercase: {0}, Lowercase: {1}", upperLowerWord.Upper, upperLowerWord.Lower);
+            }
+        }
+
+        public void GenerateUpperLowerWordsLambda(string[] words)
+        {
+            var upperLowerWords = words.Select(word => new
+            {
+                Upper = word.ToUpper(), Lower = word.ToLower()
+            });
+
+            foreach (var upperLowerWord in upperLowerWords)
+            {
+                Debug.WriteLine("Uppercase: {0}, Lowercase: {1}", upperLowerWord.Upper, upperLowerWord.Lower);
+            }
+        }
     }
 }
