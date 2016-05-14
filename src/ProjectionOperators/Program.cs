@@ -56,7 +56,8 @@ namespace ProjectionOperators
 
 
             /*
-                This sample uses an indexed Select clause to determine if the value of ints in an array match their position in the array.
+                This sample uses an indexed Select clause to determine if the value of 
+                ints in an array match their position in the array.
             */
             projectionOperator.DetermineNumberIsInPlaceLambda(DataProvider.GivenNumbers());
 
@@ -67,6 +68,14 @@ namespace ProjectionOperators
             */
             projectionOperator.FilteredEachTextDigitLessThanFiveLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
             projectionOperator.FilteredEachTextDigitLessThanFiveLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+
+
+            /*
+                This sample uses a compound from clause to make a query that returns all pairs of
+                numbers from both arrays such that the number from numbersA is less than the number from numbersB.
+            */
+            projectionOperator.CompoundPairsFromNumbersALessThanNumbersBLinq(DataProvider.GivenNumbersA(), DataProvider.GivenNumbersB());
+            projectionOperator.CompoundPairsFromNumbersALessThanNumbersBLambda(DataProvider.GivenNumbersA(), DataProvider.GivenNumbersB());
         }
     }
 }

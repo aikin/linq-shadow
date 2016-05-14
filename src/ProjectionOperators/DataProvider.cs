@@ -112,6 +112,18 @@ namespace ProjectionOperators
             string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
             return words;
         }
+
+        public static int[] GivenNumbersA()
+        {
+            int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            return numbersA;
+        }
+
+        public static int[] GivenNumbersB()
+        {
+            int[] numbersB = { 1, 3, 5, 7, 8 };
+            return numbersB;
+        }
     }
 
     public class Product
