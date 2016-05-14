@@ -13,7 +13,7 @@ namespace ProjectionOperators
         {
         }
 
-        public void PlusOneForEachItemLinq(int[] numbers)
+        public List<int> PlusOneForEachItemLinq(int[] numbers)
         {
             var numbersPlusOne = 
                 from n in numbers 
@@ -25,6 +25,8 @@ namespace ProjectionOperators
             {
                 Debug.WriteLine(num);
             }
+
+            return numbersPlusOne.ToList();
         }
 
         public void PlusOneForEachItemLambda(int[] numbers)

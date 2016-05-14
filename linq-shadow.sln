@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "main", "main", "{8ADAD71F-B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6D7736B4-2646-4B95-8EA7-541694DB6BD7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectionOperators", "test\ProjectionOperators\ProjectionOperators.csproj", "{15C60602-CEFB-4FDA-8CAA-4D6C93CD4169}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "test\Test\Test.csproj", "{15C60602-CEFB-4FDA-8CAA-4D6C93CD4169}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
