@@ -36,6 +36,10 @@ namespace ProjectionOperators
             */
             projectionOperator.GenerateUpperLowerWordsLinq(DataProvider.GivenWords());
             projectionOperator.GenerateUpperLowerWordsLambda(DataProvider.GivenWords());
+
+            /* This sample uses select to produce a sequence containing text representations of digits and whether their length is even or odd. */
+            projectionOperator.GenerateDigitOddEvensLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+            projectionOperator.GenerateDigitsOddEvensLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
         }
     }
 }
