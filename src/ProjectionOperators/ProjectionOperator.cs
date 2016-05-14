@@ -133,10 +133,46 @@ namespace ProjectionOperators
 
         public void GenerateDigitsOddEvensLambda(int[] numbers, string[] strings)
         {
-            var digitOddEvens = numbers.Select(number => new { Digit = strings[number], Even = number % 2 == 0 });
+            var digitOddEvens = numbers.Select(number => new
+            {
+                Digit = strings[number], Even = number % 2 == 0
+            });
+
             foreach (var digitOddEven in digitOddEvens)
             {
                 Debug.WriteLine("The digit {0} is {1}.", digitOddEven.Digit, digitOddEven.Even ? "even" : "odd");
+            }
+        }
+
+
+        public void GenerateProductInfosLambda(List<Product> products)
+        {
+            var productInfos = products.Select(product => new
+            {
+                product.Name,
+                product.Category,
+                Price = product.UnitPrice
+            });
+
+            Debug.WriteLine("Product Info:");
+            foreach (var productInfo in productInfos)
+            {
+                Debug.WriteLine("{0} is in the category {1} and costs {2} per unit.", 
+                    productInfo.Name, productInfo.Category, productInfo.Price);
+            }
+        }
+
+        public void GenerateProductInfosLinq(List<Product> products)
+        {
+            var productInfos =
+                from product in products
+                select new { product.Name, product.Category, Price = product.UnitPrice};
+
+            Debug.WriteLine("Product Info:");
+            foreach (var productInfo in productInfos)
+            {
+                Debug.WriteLine("{0} is in the category {1} and costs {2} per unit.",
+                    productInfo.Name, productInfo.Category, productInfo.Price);
             }
         }
     }
