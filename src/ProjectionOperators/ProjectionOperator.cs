@@ -240,5 +240,46 @@ namespace ProjectionOperators
                 Debug.WriteLine("{0} is less than {1}", pair.numA, pair.numB);
             }
         }
+
+        public void CompoundOrdersByOrderTotalLessThanFiveHundredLinq(List<Customer> customers, List<Order> orders)
+        {
+            var samllOrders =
+                from customer in customers
+                from order in orders
+                where customer.Id == order.CustomerId && order.Total < decimal.Parse("500")
+                select new
+                {
+                    CustomerId = order.CustomerId,
+                    OrderId = order.Id,
+                    Total = order.Total
+                }; //  anonymous is immuable, readonly
+
+            Debug.WriteLine("customer order total < 500:");
+            foreach (var samllOrder in samllOrders)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 
+                    samllOrder.CustomerId, samllOrder.OrderId, samllOrder.Total);
+            }
+        }
+
+        public void CompoundOrdersByOrderTotalLessThanFiveHundredLambda(List<Customer> customers, List<Order> orders)
+        {
+            var samllOrders = customers
+                .SelectMany(customer => orders, (customer, order) => new {customer, order})
+                .Where(orderWithCustomer => orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId && orderWithCustomer.order.Total < decimal.Parse("500"))
+                .Select(orderWithCustomer => new
+                {
+                    CustomerId = orderWithCustomer.order.CustomerId,
+                    OrderId = orderWithCustomer.order.Id,
+                    Total = orderWithCustomer.order.Total
+                });
+
+            Debug.WriteLine("customer order total < 500:");
+            foreach (var samllOrder in samllOrders)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 
+                    samllOrder.CustomerId, samllOrder.OrderId, samllOrder.Total);
+            }
+        }
     }
 }

@@ -76,6 +76,13 @@ namespace ProjectionOperators
             */
             projectionOperator.CompoundPairsFromNumbersALessThanNumbersBLinq(DataProvider.GivenNumbersA(), DataProvider.GivenNumbersB());
             projectionOperator.CompoundPairsFromNumbersALessThanNumbersBLambda(DataProvider.GivenNumbersA(), DataProvider.GivenNumbersB());
+
+
+            /* 
+                This sample uses a compound from clause to select all orders where the order total is less than 500.00.
+            */
+            projectionOperator.CompoundOrdersByOrderTotalLessThanFiveHundredLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders());
+            projectionOperator.CompoundOrdersByOrderTotalLessThanFiveHundredLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders());
         }
     }
 }

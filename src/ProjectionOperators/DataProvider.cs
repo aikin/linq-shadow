@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ProjectionOperators
 {
@@ -17,13 +15,13 @@ namespace ProjectionOperators
 
         public static string[] GivenStrings()
         {
-            string[] strings = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine" };
+            string[] strings = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
             return strings;
         }
 
         public static List<Product> GivenProducts()
         {
-            var products = new List<Product>()
+            var products = new List<Product>
             {
                 new Product(1, "Chai", "Beverages", 18.0000M, 39),
                 new Product(2, "Chang", "Beverages", 19.0000M, 17),
@@ -109,21 +107,80 @@ namespace ProjectionOperators
 
         public static string[] GivenWords()
         {
-            string[] words = { "aPPLE", "BlUeBeRrY", "cHeRry" };
+            string[] words = {"aPPLE", "BlUeBeRrY", "cHeRry"};
             return words;
         }
 
         public static int[] GivenNumbersA()
         {
-            int[] numbersA = { 0, 2, 4, 5, 6, 8, 9 };
+            int[] numbersA = {0, 2, 4, 5, 6, 8, 9};
             return numbersA;
         }
 
         public static int[] GivenNumbersB()
         {
-            int[] numbersB = { 1, 3, 5, 7, 8 };
+            int[] numbersB = {1, 3, 5, 7, 8};
             return numbersB;
         }
+
+        public static List<Customer> GivenCustomers()
+        {
+            var xElement = XDocument.Load("Customers.xml").Root;
+            if (xElement == null) return new List<Customer>();
+                
+            return xElement
+                .Elements("customer")
+                .Select(e => new Customer
+                {
+                    Id = (string) e.Element("id"),
+                    CompanyName = (string) e.Element("name"),
+                    Address = (string) e.Element("address"),
+                    City = (string) e.Element("city"),
+                    Region = (string) e.Element("region"),
+                    PostalCode = (string) e.Element("postalcode"),
+                    Country = (string) e.Element("country"),
+                    Phone = (string) e.Element("phone"),
+                    Fax = (string) e.Element("fax")
+                })
+                .ToList();
+        }
+
+        public static List<Order> GivenOrders()
+        {
+            var xElement = XDocument.Load("customers.xml").Root;
+            if (xElement == null) return new List<Order>();
+
+            return xElement.Elements("customer")
+                .SelectMany(e => e.Elements("orders").Elements("order"), (e, o) => new Order
+                {
+                    Id = (string) o.Element("id"),
+                    CustomerId = (string) e.Element("id"),
+                    OrderDate = (DateTime) o.Element("orderdate"),
+                    Total = (decimal) o.Element("total")
+                })
+                .ToList();
+        }
+    }
+
+    public class Customer
+    {
+        public string Id { get; set; }
+        public string CompanyName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
+        public string Region { get; set; }
+        public string PostalCode { get; set; }
+        public string Country { get; set; }
+        public string Phone { get; set; }
+        public string Fax { get; set; }
+    }
+
+    public class Order
+    {
+        public string Id { get; set; }
+        public DateTime OrderDate { get; set; }
+        public decimal Total { get; set; }
+        public string CustomerId { get; set; }
     }
 
     public class Product
