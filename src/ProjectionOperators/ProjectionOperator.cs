@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
@@ -279,6 +280,51 @@ namespace ProjectionOperators
             {
                 Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 
                     samllOrder.CustomerId, samllOrder.OrderId, samllOrder.Total);
+            }
+        }
+
+        public void CompoundOrdersByOrderDateLinq(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
+        {
+            var laterOrders =
+                from customer in customers
+                from order in orders
+                where customer.Id == order.CustomerId && order.OrderDate >= minOrderDate
+                select new
+                {
+                    CustomerId = order.CustomerId,
+                    OrderId = order.Id,
+                    OrderDate = order.OrderDate
+                };
+
+            Debug.WriteLine($"customer order date >= {minOrderDate}:");
+            foreach (var order in laterOrders)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  OrderDate={2}",
+                    order.CustomerId, order.OrderId, order.OrderDate);
+            }
+        }
+
+
+        public void CompoundOrdersByOrderDateLambda(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
+        {
+            var laterOrders = customers
+                .SelectMany(customer => orders, (customer, order) => new {customer, order})
+                .Where(
+                    orderWithCustomer =>
+                        orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId &&
+                        orderWithCustomer.order.OrderDate >= minOrderDate)
+                .Select(orderWithCustomer => new
+                {
+                    CustomerId = orderWithCustomer.order.CustomerId,
+                    OrderId = orderWithCustomer.order.Id,
+                    OrderDate = orderWithCustomer.order.OrderDate
+                });
+
+            Debug.WriteLine($"customer order date >= {minOrderDate}:");
+            foreach (var order in laterOrders)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  OrderDate={2}",
+                    order.CustomerId, order.OrderId, order.OrderDate);
             }
         }
     }
