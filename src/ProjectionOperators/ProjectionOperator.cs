@@ -288,7 +288,7 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderDateLinq(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
+        public void CompoundOrdersByOrderDateLaterThanLinq(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
         {
             var laterOrders =
                 from customer in customers
@@ -310,7 +310,7 @@ namespace ProjectionOperators
         }
 
 
-        public void CompoundOrdersByOrderDateLambda(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
+        public void CompoundOrdersByOrderDateLaterThanLambda(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
         {
             var laterOrders = customers
                 .SelectMany(customer => orders, (customer, order) => new {customer, order})
@@ -333,8 +333,7 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalGreaterThanLinq(List<Customer> customers, List<Order> orders,
-            decimal minOrderTotal)
+        public void CompoundOrdersByOrderTotalGreaterThanLinq(List<Customer> customers, List<Order> orders, decimal minOrderTotal)
         {
             var largeOrders =
                 from customer in customers
@@ -357,8 +356,7 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalGreaterThanLambda(List<Customer> customers, List<Order> orders,
-            decimal minOrderTotal)
+        public void CompoundOrdersByOrderTotalGreaterThanLambda(List<Customer> customers, List<Order> orders, decimal minOrderTotal)
         {
             var largeOrders =
                 customers.SelectMany(customer => orders, (customer, order) => new {customer, order})
@@ -376,6 +374,52 @@ namespace ProjectionOperators
             {
                 Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}",
                     order.CustomerId, order.OrderId, order.Total);
+            }
+        }
+
+        public void CompoundOrdersByOrderDateLaterThanInWashingtonLinq(List<Customer> customers, List<Order> orders, DateTime cutoffDate)
+        {
+            var laterOrdersInWashingthon =
+                from customer in customers
+                where customer.Region == "WA"
+                from order in orders
+                where customer.Id == order.CustomerId && order.OrderDate >= cutoffDate
+                select new
+                {
+                    CustomerId = customer.Id,
+                    OrderId = order.Id,
+                    OrderDate = order.OrderDate
+                };
+
+            Debug.WriteLine($"customer order date >= {cutoffDate}:");
+            foreach (var order in laterOrdersInWashingthon)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  OrderDate={2}",
+                    order.CustomerId, order.OrderId, order.OrderDate);
+            }
+        }
+
+        public void CompoundOrdersByOrderDateLaterThanInWashingtonLabdma(List<Customer> customers, List<Order> orders, DateTime cutoffDate)
+        {
+            var laterOrdersInWashingthon = customers
+                .Where(customer => customer.Region == "WA")
+                .SelectMany(customer => orders, (customer, order) => new {customer, order})
+                .Where(orderWithCustomer =>
+                        orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId &&
+                        orderWithCustomer.order.OrderDate >= cutoffDate)
+                .Select(orderWithCustomer => new
+                {
+                    CustomerId = orderWithCustomer.customer.Id,
+                    OrderId = orderWithCustomer.order.Id,
+                    OrderDate = orderWithCustomer.order.OrderDate 
+                });
+                
+
+            Debug.WriteLine($"customer order date >= {cutoffDate}:");
+            foreach (var order in laterOrdersInWashingthon)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  OrderDate={2}",
+                    order.CustomerId, order.OrderId, order.OrderDate);
             }
         }
     }
