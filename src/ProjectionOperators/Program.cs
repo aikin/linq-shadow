@@ -81,14 +81,22 @@ namespace ProjectionOperators
             /* 
                 This sample uses a compound from clause to select all orders where the order total is less than 500.00.
             */
-            projectionOperator.CompoundOrdersByOrderTotalLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("500"));
-            projectionOperator.CompoundOrdersByOrderTotalLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("500"));
+            projectionOperator.CompoundOrdersByOrderTotalLessThanLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("500"));
+            projectionOperator.CompoundOrdersByOrderTotalLessThanLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("500"));
 
             /* 
                 This sample uses a compound from clause to select all orders where the order was made in 1998 or later.
             */
             projectionOperator.CompoundOrdersByOrderDateLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), new DateTime(1998, 1, 1));
             projectionOperator.CompoundOrdersByOrderDateLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), new DateTime(1998, 1, 1));
+
+
+            /*
+                This sample uses a compound from clause to select all orders where the 
+                order total is greater than 2000.00 and uses from assignment to avoid requesting the total twice.
+            */
+            projectionOperator.CompoundOrdersByOrderTotalGreaterThanLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("2000"));
+            projectionOperator.CompoundOrdersByOrderTotalGreaterThanLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("2000"));
         }
     }
 }

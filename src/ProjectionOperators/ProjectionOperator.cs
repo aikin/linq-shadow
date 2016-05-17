@@ -242,7 +242,8 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalLinq(List<Customer> customers, List<Order> orders, decimal maxOrderTotal)
+        public void CompoundOrdersByOrderTotalLessThanLinq(List<Customer> customers, List<Order> orders,
+            decimal maxOrderTotal)
         {
             var samllOrders =
                 from customer in customers
@@ -258,16 +259,20 @@ namespace ProjectionOperators
             Debug.WriteLine($"customer order total < {maxOrderTotal}:");
             foreach (var samllOrder in samllOrders)
             {
-                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}",
                     samllOrder.CustomerId, samllOrder.OrderId, samllOrder.Total);
             }
         }
 
-        public void CompoundOrdersByOrderTotalLambda(List<Customer> customers, List<Order> orders, decimal maxOrderTotal)
+        public void CompoundOrdersByOrderTotalLessThanLambda(List<Customer> customers, List<Order> orders,
+            decimal maxOrderTotal)
         {
             var samllOrders = customers
                 .SelectMany(customer => orders, (customer, order) => new {customer, order})
-                .Where(orderWithCustomer => orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId && orderWithCustomer.order.Total < maxOrderTotal)
+                .Where(
+                    orderWithCustomer =>
+                        orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId &&
+                        orderWithCustomer.order.Total < maxOrderTotal)
                 .Select(orderWithCustomer => new
                 {
                     CustomerId = orderWithCustomer.order.CustomerId,
@@ -278,7 +283,7 @@ namespace ProjectionOperators
             Debug.WriteLine($"customer order total < {maxOrderTotal}:");
             foreach (var samllOrder in samllOrders)
             {
-                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}",
                     samllOrder.CustomerId, samllOrder.OrderId, samllOrder.Total);
             }
         }
@@ -325,6 +330,52 @@ namespace ProjectionOperators
             {
                 Debug.WriteLine("CustomerID={0}  OrderID={1}  OrderDate={2}",
                     order.CustomerId, order.OrderId, order.OrderDate);
+            }
+        }
+
+        public void CompoundOrdersByOrderTotalGreaterThanLinq(List<Customer> customers, List<Order> orders,
+            decimal minOrderTotal)
+        {
+            var largeOrders =
+                from customer in customers
+                from order in orders
+                let Total = order.Total
+                where customer.Id == order.CustomerId
+                      && Total >= minOrderTotal
+                select new
+                {
+                    CustomerId = customer.Id,
+                    OrderId = order.Id,
+                    Total
+                };
+
+            Debug.WriteLine($"customer order total < {minOrderTotal}:");
+            foreach (var order in largeOrders)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}",
+                    order.CustomerId, order.OrderId, order.Total);
+            }
+        }
+
+        public void CompoundOrdersByOrderTotalGreaterThanLambda(List<Customer> customers, List<Order> orders,
+            decimal minOrderTotal)
+        {
+            var largeOrders =
+                customers.SelectMany(customer => orders, (customer, order) => new {customer, order})
+                    .Select(@t => new {@t, Total = @t.order.Total})
+                    .Where(@t => @t.@t.customer.Id == @t.@t.order.CustomerId && @t.Total >= minOrderTotal)
+                    .Select(@t => new
+                    {
+                        CustomerId = @t.@t.customer.Id,
+                        OrderId = @t.@t.order.Id,
+                        @t.Total
+                    });
+
+            Debug.WriteLine($"customer order total < {minOrderTotal}:");
+            foreach (var order in largeOrders)
+            {
+                Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}",
+                    order.CustomerId, order.OrderId, order.Total);
             }
         }
     }
