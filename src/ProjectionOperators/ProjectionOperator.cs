@@ -241,12 +241,12 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalLessThanFiveHundredLinq(List<Customer> customers, List<Order> orders)
+        public void CompoundOrdersByOrderTotalLinq(List<Customer> customers, List<Order> orders, decimal maxOrderTotal)
         {
             var samllOrders =
                 from customer in customers
                 from order in orders
-                where customer.Id == order.CustomerId && order.Total < decimal.Parse("500")
+                where customer.Id == order.CustomerId && order.Total < maxOrderTotal
                 select new
                 {
                     CustomerId = order.CustomerId,
@@ -254,7 +254,7 @@ namespace ProjectionOperators
                     Total = order.Total
                 }; //  anonymous is immuable, readonly
 
-            Debug.WriteLine("customer order total < 500:");
+            Debug.WriteLine($"customer order total < {maxOrderTotal}:");
             foreach (var samllOrder in samllOrders)
             {
                 Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 
@@ -262,11 +262,11 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalLessThanFiveHundredLambda(List<Customer> customers, List<Order> orders)
+        public void CompoundOrdersByOrderTotalLambda(List<Customer> customers, List<Order> orders, decimal maxOrderTotal)
         {
             var samllOrders = customers
                 .SelectMany(customer => orders, (customer, order) => new {customer, order})
-                .Where(orderWithCustomer => orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId && orderWithCustomer.order.Total < decimal.Parse("500"))
+                .Where(orderWithCustomer => orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId && orderWithCustomer.order.Total < maxOrderTotal)
                 .Select(orderWithCustomer => new
                 {
                     CustomerId = orderWithCustomer.order.CustomerId,
@@ -274,7 +274,7 @@ namespace ProjectionOperators
                     Total = orderWithCustomer.order.Total
                 });
 
-            Debug.WriteLine("customer order total < 500:");
+            Debug.WriteLine($"customer order total < {maxOrderTotal}:");
             foreach (var samllOrder in samllOrders)
             {
                 Debug.WriteLine("CustomerID={0}  OrderID={1}  Total={2}", 

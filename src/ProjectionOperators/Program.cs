@@ -81,8 +81,9 @@ namespace ProjectionOperators
             /* 
                 This sample uses a compound from clause to select all orders where the order total is less than 500.00.
             */
-            projectionOperator.CompoundOrdersByOrderTotalLessThanFiveHundredLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders());
-            projectionOperator.CompoundOrdersByOrderTotalLessThanFiveHundredLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders());
+            projectionOperator.CompoundOrdersByOrderTotalLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("500"));
+            projectionOperator.CompoundOrdersByOrderTotalLambda(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), decimal.Parse("500"));
+
         }
     }
 }
