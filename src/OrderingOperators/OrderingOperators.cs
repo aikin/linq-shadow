@@ -79,7 +79,80 @@ namespace OrderingOperators
         {
             var sortedWords = words.OrderByDescending(a => a, new CaseInsensitiveComparer());
 
-            Debug.WriteLine("sorted words: ");
+            Debug.WriteLine("Sorted words: ");
+            foreach (var word in sortedWords)
+            {
+                Debug.WriteLine(word);
+            }
+        }
+
+        public void SortDigitsCompoundOrderByDigitLengthAndDigitLinq(string[] digits)
+        {
+            var sortedDigits =
+                from digit in digits
+                orderby digit.Length, digit
+                select digit;
+
+
+            Debug.WriteLine("Sorted digits:");
+            foreach (var digit in sortedDigits)
+            {
+                Debug.WriteLine(digit);
+            }
+        }
+        public void SortDigitsCompoundOrderByDigitLengthAndDigitLambda(string[] digits)
+        {
+            var sortedDigits = digits.OrderBy(digit => digit.Length).ThenBy(digit => digit);
+
+            Debug.WriteLine("Sorted digits:");
+            foreach (var digit in sortedDigits)
+            {
+                Debug.WriteLine(digit);
+            }
+        }
+
+        public void SortWordsByCompoundCustomComparerLambda(string[] words)
+        {
+            var sortedWords = words.OrderBy(w => w.Length).ThenBy(w => new CaseInsensitiveComparer());
+
+            Debug.WriteLine("Sorted words: ");
+            foreach (var word in sortedWords)
+            {
+                Debug.WriteLine(word);
+            }
+        }
+
+        public void SortProductsByCompoundCategoryAndUnitPriceDescLinq(List<Product> products)
+        {
+            var sortedProducts =
+                from prod in products
+                orderby prod.Category, prod.UnitPrice descending 
+                select prod;
+
+            Debug.WriteLine("Sorted Products: ");
+            foreach (var product in sortedProducts)
+            {
+                Debug.WriteLine("{0} is in the category {1} and costs {2} per unit.",
+                    product.Name, product.Category, product.UnitPrice);
+            }
+        }
+        public void SortProductsByCompoundCategoryAndUnitPriceDescLambda(List<Product> products)
+        {
+            var sortedProducts = products.OrderBy(prod => prod.Category).ThenByDescending(prod => prod.UnitPrice);
+
+            Debug.WriteLine("Sorted Products: ");
+            foreach (var product in sortedProducts)
+            {
+                Debug.WriteLine("{0} is in the category {1} and costs {2} per unit.",
+                    product.Name, product.Category, product.UnitPrice);
+            }
+        }
+
+        public void SortWordsByCompoundCustomComparerDescLambda(string[] words)
+        {
+            var sortedWords = words.OrderBy(w => w.Length).ThenByDescending(w => new CaseInsensitiveComparer());
+
+            Debug.WriteLine("Sorted words: ");
             foreach (var word in sortedWords)
             {
                 Debug.WriteLine(word);
