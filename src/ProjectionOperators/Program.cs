@@ -5,7 +5,7 @@ namespace ProjectionOperators
 {
     public class Program
     {
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var projectionOperator = new ProjectionOperator();
 
