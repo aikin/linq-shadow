@@ -22,6 +22,7 @@ namespace OrderingOperators
                     product.Name, product.Category, product.UnitPrice);
             }
         }
+
         public void SortProductsByNameLambda(List<Product> products)
         {
             var sortedProducts = products.OrderBy(product => product.Name);
@@ -100,6 +101,7 @@ namespace OrderingOperators
                 Debug.WriteLine(digit);
             }
         }
+
         public void SortDigitsCompoundOrderByDigitLengthAndDigitLambda(string[] digits)
         {
             var sortedDigits = digits.OrderBy(digit => digit.Length).ThenBy(digit => digit);
@@ -126,7 +128,7 @@ namespace OrderingOperators
         {
             var sortedProducts =
                 from prod in products
-                orderby prod.Category, prod.UnitPrice descending 
+                orderby prod.Category, prod.UnitPrice descending
                 select prod;
 
             Debug.WriteLine("Sorted Products: ");
@@ -136,6 +138,7 @@ namespace OrderingOperators
                     product.Name, product.Category, product.UnitPrice);
             }
         }
+
         public void SortProductsByCompoundCategoryAndUnitPriceDescLambda(List<Product> products)
         {
             var sortedProducts = products.OrderBy(prod => prod.Category).ThenByDescending(prod => prod.UnitPrice);
@@ -156,6 +159,32 @@ namespace OrderingOperators
             foreach (var word in sortedWords)
             {
                 Debug.WriteLine(word);
+            }
+        }
+
+        public void RevereDigitsWhoseSecondLetterIsILinq(string[] digits)
+        {
+            var reversedIDigits = (
+                from digit in digits
+                where digit[1] == 'i'
+                select digit)
+                .Reverse();
+
+            Debug.WriteLine("A backwards list of the digits with a second character of 'i':");
+            foreach (var d in reversedIDigits)
+            {
+                Debug.WriteLine(d);
+            }
+        }
+
+        public void RevereDigitsWhoseSecondLetterIsILambda(string[] digits)
+        {
+            var reversedIDigits = digits.Where(digit => digit[1] == 'i').Reverse();
+
+            Debug.WriteLine("A backwards list of the digits with a second character of 'i':");
+            foreach (var d in reversedIDigits)
+            {
+                Debug.WriteLine(d);
             }
         }
     }
