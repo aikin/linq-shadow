@@ -27,36 +27,27 @@ namespace PartitioningOperators
 
 
             /*
-                This sample uses Take to get only the first 3 elements of the array
+                This sample uses TakeWhile to return elements starting from the beginning of the array until a number is read whose value is not less than 6.
             */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
-            /*
-                This sample uses Take to get only the first 3 elements of the array
-            */
+            partitioningOperators.TakeNumbersUntilNumberLessThanSix(DataProvider.GivenNumbers());
 
+
+            /*
+                This sample uses TakeWhile to return elements starting from the beginning of the array until a number is hit that is less than its position in the array.
+            */
+            partitioningOperators.TakWhileNumberLessThanItPosition(DataProvider.GivenNumbers());
+
+
+            /*
+                This sample uses SkipWhile to get the elements of the array starting from the first element divisible by 3.
+            */
+            partitioningOperators.SkipWhileFirstNumberDivisble3(DataProvider.GivenNumbers());
+
+
+            /*
+                This sample uses SkipWhile to get the elements of the array starting from the first element less than its position.
+            */
+            partitioningOperators.SkipWhileFirstNumberLessThanItsPosition(DataProvider.GivenNumbers());
         }
     }
 }
