@@ -7,7 +7,6 @@
 # how
 
 ## TODO
-
 * add website for online priactice linq
 
 

@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Linq.Shadow.Common;
 using Machine.Specifications;
 
-namespace ProjectionOperators
+namespace ProjectionOperators.Test
 {
 
     [Subject("Projectioin Operators")]
