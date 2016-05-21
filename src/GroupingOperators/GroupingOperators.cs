@@ -153,6 +153,20 @@ namespace GroupingOperators
                 }
             }
         }
+
+        public void GroupWordsByCustomAnagramComparerAndConvertToUppercaseLambda(string[] anagrams)
+        {
+            var anagramGroups = anagrams.GroupBy(w => w.Trim(), a => a.ToUpper(), new AnagramEqualityComparer());
+
+            foreach (var g in anagramGroups)
+            {
+                Debug.WriteLine($"Key: {g.Key}");
+                foreach (var w in g)
+                {
+                    Debug.WriteLine("\t" + w);
+                }
+            }
+        }
     }
 
     public class AnagramEqualityComparer : IEqualityComparer<string>

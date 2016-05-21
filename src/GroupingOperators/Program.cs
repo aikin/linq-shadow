@@ -31,10 +31,12 @@ namespace GroupingOperators
             groupingOperators.GroupWordsByCustomAnagramComparerLambda(DataProvider.GivenAnagramWords());
 
 
-
             /*
-                This sample uses group by to partition a list of products by category.
+                This sample uses GroupBy to partition trimmed elements of an array using a custom comparer that matches words that are anagrams of each other, and 
+                then converts the results to uppercase.
             */
+            groupingOperators.GroupWordsByCustomAnagramComparerAndConvertToUppercaseLambda(DataProvider.GivenAnagramWords());
+
         }
     }
 }
