@@ -160,6 +160,12 @@ namespace Linq.Shadow.Common
                 })
                 .ToList();
         }
+
+        public static string[] GivenAnagramWords()
+        {
+            string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
+            return anagrams;
+        }
     }
 
     public class Customer

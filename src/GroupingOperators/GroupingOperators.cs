@@ -93,12 +93,85 @@ namespace GroupingOperators
                         foreach (var order in mg.Orders)
                         {
                             Debug.WriteLine($"\t\t\t OrderID= {order.Id}");
-                            Debug.WriteLine($"\t\t\t OrderDate= { order.OrderDate }");
+                            Debug.WriteLine($"\t\t\t OrderDate= {order.OrderDate}");
                         }
                     }
                 }
             }
+        }
 
+        public void GroupOrdersByNestedConditionsLambda(List<Customer> customers, List<Order> orders)
+        {
+            var customerOrderGroups =
+                customers.Select(customer => new
+                {
+                    CompanyName = customer.CompanyName,
+                    YearGroups =
+                        orders.Where(order => customer.Id == order.CustomerId)
+                            .GroupBy(order => order.OrderDate.Year)
+                            .Select(yg => new
+                            {
+                                Year = yg.Key,
+                                MonthGroups =
+                                    yg.GroupBy(order => order.OrderDate.Month).Select(mg => new
+                                    {
+                                        Month = mg.Key,
+                                        Orders = mg
+                                    })
+                            })
+                });
+
+            foreach (var cog in customerOrderGroups)
+            {
+                Debug.WriteLine($"CompanyName= {cog.CompanyName}");
+                foreach (var yg in cog.YearGroups)
+                {
+                    Debug.WriteLine($"\t Year= {yg.Year}");
+                    foreach (var mg in yg.MonthGroups)
+                    {
+                        Debug.WriteLine($"\t\t Month= {mg.Month}");
+                        foreach (var order in mg.Orders)
+                        {
+                            Debug.WriteLine($"\t\t\t OrderID= {order.Id}");
+                            Debug.WriteLine($"\t\t\t OrderDate= {order.OrderDate}");
+                        }
+                    }
+                }
+            }
+        }
+
+        public void GroupWordsByCustomAnagramComparerLambda(string[] anagrams)
+        {
+            var anagramGroups = anagrams.GroupBy(w => w.Trim(), new AnagramEqualityComparer());
+
+            foreach (var g in anagramGroups)
+            {
+                Debug.WriteLine($"Key: {g.Key}");
+                foreach (var w in g)
+                {
+                    Debug.WriteLine("\t" + w);
+                }
+            }
+        }
+    }
+
+    public class AnagramEqualityComparer : IEqualityComparer<string>
+    {
+        public bool Equals(string x, string y)
+        {
+            return getCanonicalString(x) == getCanonicalString(y);
+        }
+
+        public int GetHashCode(string obj)
+        {
+            return getCanonicalString(obj).GetHashCode();
+        }
+
+        private static string getCanonicalString(string word)
+        {
+            var wordChars = word.ToCharArray();
+            Array.Sort(wordChars);
+            return new string(wordChars);
         }
     }
 }
