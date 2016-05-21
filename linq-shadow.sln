@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestrictionOperators", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartitioningOperators", "src\PartitioningOperators\PartitioningOperators.csproj", "{F55395BB-2FC7-4C48-B315-3CDA396DE056}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderingOperators", "src\OrderingOperators\OrderingOperators.csproj", "{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{F55395BB-2FC7-4C48-B315-3CDA396DE056}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F55395BB-2FC7-4C48-B315-3CDA396DE056}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F55395BB-2FC7-4C48-B315-3CDA396DE056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,5 +65,6 @@ Global
 		{DC499D1C-C71F-4FBB-8327-BB13E89E3D7E} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{B0AAC549-1B63-4BDF-B6AE-D85316EE7F93} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{F55395BB-2FC7-4C48-B315-3CDA396DE056} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
+		{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 	EndGlobalSection
 EndGlobal

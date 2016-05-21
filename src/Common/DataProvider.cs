@@ -107,7 +107,7 @@ namespace Linq.Shadow.Common
 
         public static string[] GivenWords()
         {
-            string[] words = {"aPPLE", "BlUeBeRrY", "cHeRry"};
+            string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
             return words;
         }
 
