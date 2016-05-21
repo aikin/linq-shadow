@@ -115,7 +115,7 @@ namespace OrderingOperators
 
         public void SortWordsByCompoundCustomComparerLambda(string[] words)
         {
-            var sortedWords = words.OrderBy(w => w.Length).ThenBy(w => new CaseInsensitiveComparer());
+            var sortedWords = words.OrderBy(w => w.Length).ThenBy(w => w, new CaseInsensitiveComparer());
 
             Debug.WriteLine("Sorted words: ");
             foreach (var word in sortedWords)
@@ -153,7 +153,7 @@ namespace OrderingOperators
 
         public void SortWordsByCompoundCustomComparerDescLambda(string[] words)
         {
-            var sortedWords = words.OrderBy(w => w.Length).ThenByDescending(w => new CaseInsensitiveComparer());
+            var sortedWords = words.OrderBy(w => w.Length).ThenByDescending(w => w, new CaseInsensitiveComparer());
 
             Debug.WriteLine("Sorted words: ");
             foreach (var word in sortedWords)
