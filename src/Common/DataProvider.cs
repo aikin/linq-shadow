@@ -13,10 +13,10 @@ namespace Linq.Shadow.Common
             return numbers;
         }
 
-        public static string[] GivenStrings()
+        public static string[] GivenDigits()
         {
-            string[] strings = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
-            return strings;
+            string[] digits = {"zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
+            return digits;
         }
 
         public static List<Product> GivenProducts()

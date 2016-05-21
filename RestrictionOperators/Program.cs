@@ -31,21 +31,18 @@ namespace RestrictionOperators
 
 
             /*
-                This sample uses the where clause to find all products that are out of stock.
+                This sample uses the where clause to find all customers in Washington and 
+                then it uses a foreach loop to iterate over the orders collection that belongs to each customer.
             */
-
+            restrictionOperators.FindCustombersInWashingtonLinq(DataProvider.GivenCustomers());
+            restrictionOperators.FindCustombersInWashingtonLambda(DataProvider.GivenCustomers());
 
 
             /*
-                This sample uses the where clause to find all products that are out of stock.
+                This sample demonstrates an indexed where clause that returns digits whose name 
+                is shorter than their value.
             */
-
-
-
-            /*
-                This sample uses the where clause to find all products that are out of stock.
-            */
-
+            restrictionOperators.FindDigitsWhoseNameIsShorterThanTheirValueLambda(DataProvider.GivenDigits());
         }
     }
 }

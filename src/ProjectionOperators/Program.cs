@@ -27,8 +27,8 @@ namespace ProjectionOperators
             /* This sample uses select to produce a sequence of 
                strings representing the text version of a sequence of ints.
             */
-            projectionOperator.TransformNumberToTextLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
-            projectionOperator.TransformNumberToTextLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+            projectionOperator.TransformNumberToTextLinq(DataProvider.GivenNumbers(), DataProvider.GivenDigits());
+            projectionOperator.TransformNumberToTextLambda(DataProvider.GivenNumbers(), DataProvider.GivenDigits());
 
 
             /*
@@ -42,8 +42,8 @@ namespace ProjectionOperators
             /* This sample uses select to produce a sequence containing text representations of 
                 digits and whether their length is even or odd. 
             */
-            projectionOperator.GenerateDigitOddEvensLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
-            projectionOperator.GenerateDigitsOddEvensLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+            projectionOperator.GenerateDigitOddEvensLinq(DataProvider.GivenNumbers(), DataProvider.GivenDigits());
+            projectionOperator.GenerateDigitsOddEvensLambda(DataProvider.GivenNumbers(), DataProvider.GivenDigits());
 
 
             /*
@@ -65,8 +65,8 @@ namespace ProjectionOperators
                 This sample combines select and where to make a simple query 
                 that returns the text form of each digit less than 5. 
             */
-            projectionOperator.FilteredEachTextDigitLessThanFiveLinq(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
-            projectionOperator.FilteredEachTextDigitLessThanFiveLambda(DataProvider.GivenNumbers(), DataProvider.GivenStrings());
+            projectionOperator.FilteredEachTextDigitLessThanFiveLinq(DataProvider.GivenNumbers(), DataProvider.GivenDigits());
+            projectionOperator.FilteredEachTextDigitLessThanFiveLambda(DataProvider.GivenNumbers(), DataProvider.GivenDigits());
 
 
             /*
