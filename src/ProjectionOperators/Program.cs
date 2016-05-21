@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace ProjectionOperators
 {
@@ -105,6 +103,12 @@ namespace ProjectionOperators
             */
             projectionOperator.CompoundOrdersByOrderDateLaterThanInWashingtonLinq(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), new DateTime(1997, 1, 1));
             projectionOperator.CompoundOrdersByOrderDateLaterThanInWashingtonLabdma(DataProvider.GivenCustomers(), DataProvider.GivenOrders(), new DateTime(1997, 1, 1));
+
+            /*
+                This sample uses an indexed SelectMany clause to select all orders, while referring to 
+                customers by the order in which they are returned from the query.
+            */
+            projectionOperator.MappingCustomersIndexForEachOrdersLabdma(DataProvider.GivenCustomers(), DataProvider.GivenOrders());
         }
     }
 }

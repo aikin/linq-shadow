@@ -288,7 +288,8 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderDateLaterThanLinq(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
+        public void CompoundOrdersByOrderDateLaterThanLinq(List<Customer> customers, List<Order> orders,
+            DateTime minOrderDate)
         {
             var laterOrders =
                 from customer in customers
@@ -310,7 +311,8 @@ namespace ProjectionOperators
         }
 
 
-        public void CompoundOrdersByOrderDateLaterThanLambda(List<Customer> customers, List<Order> orders, DateTime minOrderDate)
+        public void CompoundOrdersByOrderDateLaterThanLambda(List<Customer> customers, List<Order> orders,
+            DateTime minOrderDate)
         {
             var laterOrders = customers
                 .SelectMany(customer => orders, (customer, order) => new {customer, order})
@@ -333,7 +335,8 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalGreaterThanLinq(List<Customer> customers, List<Order> orders, decimal minOrderTotal)
+        public void CompoundOrdersByOrderTotalGreaterThanLinq(List<Customer> customers, List<Order> orders,
+            decimal minOrderTotal)
         {
             var largeOrders =
                 from customer in customers
@@ -356,7 +359,8 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderTotalGreaterThanLambda(List<Customer> customers, List<Order> orders, decimal minOrderTotal)
+        public void CompoundOrdersByOrderTotalGreaterThanLambda(List<Customer> customers, List<Order> orders,
+            decimal minOrderTotal)
         {
             var largeOrders =
                 customers.SelectMany(customer => orders, (customer, order) => new {customer, order})
@@ -377,7 +381,8 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderDateLaterThanInWashingtonLinq(List<Customer> customers, List<Order> orders, DateTime cutoffDate)
+        public void CompoundOrdersByOrderDateLaterThanInWashingtonLinq(List<Customer> customers, List<Order> orders,
+            DateTime cutoffDate)
         {
             var laterOrdersInWashingthon =
                 from customer in customers
@@ -399,27 +404,48 @@ namespace ProjectionOperators
             }
         }
 
-        public void CompoundOrdersByOrderDateLaterThanInWashingtonLabdma(List<Customer> customers, List<Order> orders, DateTime cutoffDate)
+        public void CompoundOrdersByOrderDateLaterThanInWashingtonLabdma(List<Customer> customers, List<Order> orders,
+            DateTime cutoffDate)
         {
             var laterOrdersInWashingthon = customers
                 .Where(customer => customer.Region == "WA")
                 .SelectMany(customer => orders, (customer, order) => new {customer, order})
                 .Where(orderWithCustomer =>
-                        orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId &&
-                        orderWithCustomer.order.OrderDate >= cutoffDate)
+                    orderWithCustomer.customer.Id == orderWithCustomer.order.CustomerId &&
+                    orderWithCustomer.order.OrderDate >= cutoffDate)
                 .Select(orderWithCustomer => new
                 {
                     CustomerId = orderWithCustomer.customer.Id,
                     OrderId = orderWithCustomer.order.Id,
-                    OrderDate = orderWithCustomer.order.OrderDate 
+                    OrderDate = orderWithCustomer.order.OrderDate
                 });
-                
+
 
             Debug.WriteLine($"customer order date >= {cutoffDate}:");
             foreach (var order in laterOrdersInWashingthon)
             {
                 Debug.WriteLine("CustomerID={0}  OrderID={1}  OrderDate={2}",
                     order.CustomerId, order.OrderId, order.OrderDate);
+            }
+        }
+
+        public void MappingCustomersIndexForEachOrdersLabdma(List<Customer> customers, List<Order> orders)
+        {
+            var customerOrders =
+                customers.SelectMany((customer, index) =>
+                    orders
+                        .Where(order => order.CustomerId == customer.Id)
+                        .Select(order => new
+                        {
+                            CustomerIndex = index + 1,
+                            OrderId = order.Id
+                        })
+                    );
+
+            Debug.WriteLine("customer orders:");
+            foreach (var customer in customerOrders)
+            {
+                Debug.WriteLine($"Customer Index: {customer.CustomerIndex} has an order with OrderID {customer.OrderId}");
             }
         }
     }
