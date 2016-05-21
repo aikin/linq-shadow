@@ -83,17 +83,17 @@ namespace GroupingOperators
 
             foreach (var cog in customerOrderGroups)
             {
-                Debug.WriteLine("CompanyName= {0}", cog.CompanyName);
+                Debug.WriteLine($"CompanyName= {cog.CompanyName}");
                 foreach (var yg in cog.YearGroups)
                 {
-                    Debug.WriteLine("\t Year= {0}", yg.Year);
+                    Debug.WriteLine($"\t Year= {yg.Year}");
                     foreach (var mg in yg.MonthGroups)
                     {
-                        Debug.WriteLine("\t\t Month= {0}", mg.Month);
+                        Debug.WriteLine($"\t\t Month= {mg.Month}");
                         foreach (var order in mg.Orders)
                         {
-                            Debug.WriteLine("\t\t\t OrderID= {0} ", order.Id);
-                            Debug.WriteLine("\t\t\t OrderDate= {0} ", order.OrderDate);
+                            Debug.WriteLine($"\t\t\t OrderID= {order.Id}");
+                            Debug.WriteLine($"\t\t\t OrderDate= { order.OrderDate }");
                         }
                     }
                 }
