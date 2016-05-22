@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionOperators", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElementOperators", "src\ElementOperators\ElementOperators.csproj", "{DE5C1BAB-283F-41AF-8FB5-17AAA2B8CD5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenerationOperators", "src\GenerationOperators\GenerationOperators.csproj", "{00CF2E4A-B0BF-4654-9A49-22B3857CAC03}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +81,10 @@ Global
 		{DE5C1BAB-283F-41AF-8FB5-17AAA2B8CD5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE5C1BAB-283F-41AF-8FB5-17AAA2B8CD5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE5C1BAB-283F-41AF-8FB5-17AAA2B8CD5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00CF2E4A-B0BF-4654-9A49-22B3857CAC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00CF2E4A-B0BF-4654-9A49-22B3857CAC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00CF2E4A-B0BF-4654-9A49-22B3857CAC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00CF2E4A-B0BF-4654-9A49-22B3857CAC03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -94,5 +100,6 @@ Global
 		{670DBB74-67DA-4D91-9CB8-0D490993C28A} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{9BB373EB-68A5-43C8-8F60-DA37BC4A370D} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{DE5C1BAB-283F-41AF-8FB5-17AAA2B8CD5A} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
+		{00CF2E4A-B0BF-4654-9A49-22B3857CAC03} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 	EndGlobalSection
 EndGlobal
