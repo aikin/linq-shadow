@@ -107,7 +107,7 @@ namespace Linq.Shadow.Common
 
         public static string[] GivenWords()
         {
-            string[] words = { "aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry" };
+            string[] words = {"aPPLE", "AbAcUs", "bRaNcH", "BlUeBeRrY", "ClOvEr", "cHeRry"};
             return words;
         }
 
@@ -127,7 +127,7 @@ namespace Linq.Shadow.Common
         {
             var xElement = XDocument.Load("Customers.xml").Root;
             if (xElement == null) return new List<Customer>();
-                
+
             return xElement
                 .Elements("customer")
                 .Select(e => new Customer
@@ -163,14 +163,20 @@ namespace Linq.Shadow.Common
 
         public static string[] GivenAnagramWords()
         {
-            string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
+            string[] anagrams = {"from   ", " salt", " earn ", "  last   ", " near ", " form  "};
             return anagrams;
         }
 
         public static int[] GivenFactorsOf300()
         {
-            int[] factorsOf300 = { 2, 2, 3, 5, 5 };
+            int[] factorsOf300 = {2, 2, 3, 5, 5};
             return factorsOf300;
+        }
+
+        public static double[] GivenDoubles()
+        {
+            double[] doubles = {1.7, 2.3, 1.9, 4.1, 2.9};
+            return doubles;
         }
     }
 

@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupingOperators", "src\Gr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetOperators", "src\SetOperators\SetOperators.csproj", "{670DBB74-67DA-4D91-9CB8-0D490993C28A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConversionOperators", "src\ConversionOperators\ConversionOperators.csproj", "{9BB373EB-68A5-43C8-8F60-DA37BC4A370D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{670DBB74-67DA-4D91-9CB8-0D490993C28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{670DBB74-67DA-4D91-9CB8-0D490993C28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{670DBB74-67DA-4D91-9CB8-0D490993C28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BB373EB-68A5-43C8-8F60-DA37BC4A370D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BB373EB-68A5-43C8-8F60-DA37BC4A370D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BB373EB-68A5-43C8-8F60-DA37BC4A370D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BB373EB-68A5-43C8-8F60-DA37BC4A370D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{87DA9FA2-1FAA-4B68-89B5-CDD76767C7F0} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{160AA11E-B052-4029-913A-2F8BC308DA2F} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{670DBB74-67DA-4D91-9CB8-0D490993C28A} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
+		{9BB373EB-68A5-43C8-8F60-DA37BC4A370D} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 	EndGlobalSection
 EndGlobal
