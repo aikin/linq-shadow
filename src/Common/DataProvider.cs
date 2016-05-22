@@ -166,6 +166,12 @@ namespace Linq.Shadow.Common
             string[] anagrams = { "from   ", " salt", " earn ", "  last   ", " near ", " form  " };
             return anagrams;
         }
+
+        public static int[] GivenFactorsOf300()
+        {
+            int[] factorsOf300 = { 2, 2, 3, 5, 5 };
+            return factorsOf300;
+        }
     }
 
     public class Customer
