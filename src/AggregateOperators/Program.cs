@@ -27,6 +27,22 @@ namespace AggregateOperators
             aggregateOperators.CountProductsInEachCategory(DataProvider.GivenProducts());
 
 
+            /*
+                This sample uses Sum to get the total number of characters of all words in the array.
+            */
+            aggregateOperators.SumTotalCharsOfAllWords(DataProvider.GivenWords());
+
+
+            /*
+                This sample uses Sum to get the total units in stock for each product category.
+            */
+            aggregateOperators.SumTotalUnitsInStockForEachProductCategory(DataProvider.GivenProducts());
+
+
+            /*
+                This sample uses Min to get the cheapest price among each category's products.
+            */
+            aggregateOperators.MinCheapestCategoryProducts(DataProvider.GivenProducts());
 
 
         }

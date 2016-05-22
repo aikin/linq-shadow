@@ -47,5 +47,47 @@ namespace AggregateOperators
                 Debug.WriteLine($"Category: {categoryCount.Category}    ProductCount: {categoryCount.ProductCount}");
             }
         }
+
+        public void SumTotalCharsOfAllWords(string[] words)
+        {
+            double totalChars = words.Sum(w => w.Length);
+
+            Debug.WriteLine("There are a total of {0} characters in these words.", totalChars);
+        }
+
+        public void SumTotalUnitsInStockForEachProductCategory(List<Product> products)
+        {
+            var categories = products
+                .GroupBy(prod => prod.Category)
+                .Select(prodGroup => new
+                {
+                    Category = prodGroup.Key,
+                    TotalUnitsInStock = prodGroup.Sum(p => p.UnitsInStock)
+                });
+
+
+            Debug.WriteLine("Category Products Count: ");
+            foreach (var categoryCount in categories)
+            {
+                Debug.WriteLine($"Category: {categoryCount.Category}    TotalUnitsInStock: {categoryCount.TotalUnitsInStock}");
+            }
+        }
+
+        public void MinCheapestCategoryProducts(List<Product> products)
+        {
+            var cheapestCategories = products
+                .GroupBy(p => p.Category)
+                .Select(productGroup => new
+                {
+                    Category = productGroup.Key,
+                    CheapestPrice = productGroup.Min(p => p.UnitPrice)
+                });
+
+            Debug.WriteLine("Category Products Count: ");
+            foreach (var categories in cheapestCategories)
+            {
+                Debug.WriteLine($"Category: {categories.Category}    CheapestPrice: {categories.CheapestPrice}");
+            }
+        }
     }
 }
