@@ -20,7 +20,6 @@ namespace AggregateOperators
             aggregateOperators.CountCustomerOrders(DataProvider.GivenCustomers(), DataProvider.GivenOrders());
 
 
-
             /*
                 This sample uses Count to return a list of categories and how many products each has.
             */
@@ -43,6 +42,27 @@ namespace AggregateOperators
                 This sample uses Min to get the cheapest price among each category's products.
             */
             aggregateOperators.MinCheapestCategoryProducts(DataProvider.GivenProducts());
+
+
+            /*
+                This sample uses Min to get the products with the lowest price in each category.
+            */
+            aggregateOperators.MinPriceInEachCategory(DataProvider.GivenProducts());
+
+
+            /*
+                This sample uses Max to get the length of the longest word in an array.
+            */
+            aggregateOperators.MaxWordHasLongLength(DataProvider.GivenWords());
+
+
+
+            /*
+                This sample uses Average to get the average of all numbers in an array.
+            */
+            aggregateOperators.AverageAllNumbers(DataProvider.GivenNumbers());
+
+
 
 
         }

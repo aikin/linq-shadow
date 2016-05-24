@@ -89,5 +89,40 @@ namespace AggregateOperators
                 Debug.WriteLine($"Category: {categories.Category}    CheapestPrice: {categories.CheapestPrice}");
             }
         }
+
+        public void MinPriceInEachCategory(List<Product> products)
+        {
+            var cheapestCategories = products
+                .GroupBy(prod => prod.Category)
+                .Select(productGroup => new { productGroup, minPrice = productGroup.Min(p => p.UnitPrice) })
+                .Select(productGroupWithMinPrice => new
+                {
+                    Category = productGroupWithMinPrice.productGroup.Key,
+                    CheapestProducts = productGroupWithMinPrice.productGroup.Where(p => p.UnitPrice == productGroupWithMinPrice.minPrice)
+                });
+
+            Debug.WriteLine("Category Products Count: ");
+            foreach (var categorie in cheapestCategories)
+            {
+                Debug.WriteLine($"Category: {categorie.Category}");
+                foreach (var cheapestProduct in categorie.CheapestProducts)
+                {
+                    Debug.WriteLine($"Category Products:   ProductId={cheapestProduct.Id}   ProductName={cheapestProduct.Name}   ProductPrice={cheapestProduct.UnitPrice}");
+                }
+            }
+        }
+
+        public void MaxWordHasLongLength(string[] words)
+        {
+            var longest = words.Max(w => w.Length);
+
+            Debug.WriteLine($"The longest word is {longest} characters long.");
+        }
+
+        public void AverageAllNumbers(int[] numbers)
+        {
+            var average = numbers.Average();
+            Debug.WriteLine($"The average number is {average}");
+        }
     }
 }
