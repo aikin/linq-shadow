@@ -178,6 +178,12 @@ namespace Linq.Shadow.Common
             double[] doubles = {1.7, 2.3, 1.9, 4.1, 2.9};
             return doubles;
         }
+
+        public static int[] GivenWithdrawals()
+        {
+            int[] attemptedWithdrawals = { 20, 10, 40, 50, 10, 70, 30 };
+            return attemptedWithdrawals;
+        }
     }
 
     public class Customer

@@ -63,8 +63,17 @@ namespace AggregateOperators
             aggregateOperators.AverageAllNumbers(DataProvider.GivenNumbers());
 
 
+            /*
+                This sample uses Aggregate to create a running product on the array that calculates the total product of all elements.
+            */
+            aggregateOperators.AggregateCalculateTotal(DataProvider.GivenDoubles());
 
 
+
+            /*
+                This sample uses Aggregate to create a running account balance that subtracts each withdrawal from the initial balance of 100, as long as the balance never drops below 0.
+            */
+            aggregateOperators.AggregateSubWithdrawalsInitWith100(DataProvider.GivenWithdrawals(), 100.0);
         }
     }
 }

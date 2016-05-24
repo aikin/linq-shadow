@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Linq.Shadow.Common;
@@ -123,6 +122,19 @@ namespace AggregateOperators
         {
             var average = numbers.Average();
             Debug.WriteLine($"The average number is {average}");
+        }
+
+        public void AggregateCalculateTotal(double[] doubles)
+        {
+            var product = doubles.Aggregate((runningProduct, nextFactor) => runningProduct * nextFactor);
+            Debug.WriteLine("Total product of all numbers: {0}", product);
+        }
+
+        public void AggregateSubWithdrawalsInitWith100(int[] withdrawals, double startBalance)
+        {
+            var endBalance = withdrawals.Aggregate(startBalance, (balance, nextWithdrawal) => ((nextWithdrawal <= balance) ? (balance - nextWithdrawal) : balance));
+
+            Debug.WriteLine("Ending balance: {0}", endBalance);
         }
     }
 }
