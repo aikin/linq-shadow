@@ -39,6 +39,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quantifiers", "src\Quantifi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AggregateOperators", "src\AggregateOperators\AggregateOperators.csproj", "{BA89102B-B2E7-42F0-863A-08635A686B36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryExecution", "src\QueryExecution\QueryExecution.csproj", "{CC683E49-8DD1-43B3-BB13-92CD2907C571}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,10 @@ Global
 		{BA89102B-B2E7-42F0-863A-08635A686B36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA89102B-B2E7-42F0-863A-08635A686B36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA89102B-B2E7-42F0-863A-08635A686B36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC683E49-8DD1-43B3-BB13-92CD2907C571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC683E49-8DD1-43B3-BB13-92CD2907C571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC683E49-8DD1-43B3-BB13-92CD2907C571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC683E49-8DD1-43B3-BB13-92CD2907C571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -115,5 +121,6 @@ Global
 		{00CF2E4A-B0BF-4654-9A49-22B3857CAC03} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{702FB6F4-EEC0-4C59-BC21-E77EBE5E12DE} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 		{BA89102B-B2E7-42F0-863A-08635A686B36} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
+		{CC683E49-8DD1-43B3-BB13-92CD2907C571} = {8ADAD71F-B88C-4C9C-8AE5-9846BADCAF93}
 	EndGlobalSection
 EndGlobal
