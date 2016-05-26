@@ -31,9 +31,30 @@ namespace JoinOperators
                 version of the cross join sample shows.
             */
             joinOperators.CrossJoinByCategoriesLambda(DataProvider.GivenProducts());
-            joinOperators.GroupJoinTwoSequencesLinq(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
+            joinOperators.CrossJoinByCategoriesLinq(DataProvider.GivenProducts());
+
+            /*
+                A left outer join produces a result set that includes all the left hand side elements 
+                at least once, even if they don't match any right hand side elements.
+            */
+            joinOperators.LeftOuterJoinByCountryLambda(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
+            joinOperators.LeftOuterJoinByCountryLinq(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
 
 
+            /*
+                For each customer in the table of customers, this query returns all the suppliers 
+                from that same country, or else a string indicating that no suppliers from that country were found.
+            */
+            joinOperators.LeftOuterJoinByCountryForEachCustomerLambda(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
+            joinOperators.LeftOuterJoinByCountryForEachCustomerLinq(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
+
+            /*
+                For each supplier in the table of suppliers, this query returns all the customers 
+                from the same city and country, or else a string indicating that no customers from that city/country were found. 
+                Note the use of anonymous types to encapsulate the multiple key values.
+            */
+            joinOperators.LeftOuterJoinByCountryAndCityForEachCustomerLambda(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
+            joinOperators.LeftOuterJoinByCountryAndCityForEachCustomerLinq(DataProvider.GivenCustomers(), DataProvider.GivenSuppliers());
         }
     }
 }
